@@ -13,7 +13,7 @@ public class MapperUtils {
                 price.getProduct_id(),
                 price.getBrand_id(),
                 price.getPrice_list(),
-                date == null ? null : new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss").format(date),
+                date == null ? new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss").format(new Date()) : new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss").format(date),
                 price.getPrice(),
                 price.getCurrency()
         );

@@ -11,6 +11,10 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 @Service
 public class PriceServiceImpl implements PriceService {
@@ -29,8 +33,26 @@ public class PriceServiceImpl implements PriceService {
 
             List<com.jafernandez.searchrates.models.dto.Price> result = new ArrayList<com.jafernandez.searchrates.models.dto.Price>();
 
-            for (Price price : repositoryResult) {
-                result.add(MapperUtils.mapPriceEntityToDTO(price, appDate));
+            if (repositoryResult.size() > 1) {
+
+                Map<String, List<Price>> mapByPriceList = repositoryResult.stream().collect(groupingBy(Price::getPrice_list, Collectors.toList()));
+
+                for (String key : mapByPriceList.keySet()) {
+                    List<Price> priceList = mapByPriceList.get(key);
+
+                    Price price = priceList.get(0);
+
+                    for (Price p : priceList) {
+                        if (price.getPriority() < p.getPriority()) {
+                            price = p;
+                        }
+                    }
+
+                    result.add(MapperUtils.mapPriceEntityToDTO(price, appDate));
+                }
+
+            } else {
+                result.add(MapperUtils.mapPriceEntityToDTO(repositoryResult.get(0), appDate));
             }
 
             return result;
