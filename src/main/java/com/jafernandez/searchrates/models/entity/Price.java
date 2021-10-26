@@ -15,7 +15,7 @@ public class Price {
     private int price_id;
 
     @Column
-    private Integer brand_id;
+    private int brand_id;
 
     @Column
     private Timestamp start_date;
@@ -27,13 +27,13 @@ public class Price {
     private String price_list;
 
     @Column
-    private Integer product_id;
+    private int product_id;
 
     @Column
-    private Integer priority;
+    private int priority;
 
     @Column
-    private Double price;
+    private double price;
 
     @Column
     private String currency;
