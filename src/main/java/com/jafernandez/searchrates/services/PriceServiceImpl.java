@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +22,7 @@ public class PriceServiceImpl implements PriceService {
     private PriceRepository priceRepository;
 
     @Override
-    public List<com.jafernandez.searchrates.models.dto.Price> findPricesByCriteria(Date appDate, Integer productId, Integer brandId) throws ParseException {
+    public List<com.jafernandez.searchrates.models.dto.Price> findPricesByCriteria(Date appDate, Integer productId, Integer brandId) {
 
         List<Price> repositoryResult = this.priceRepository.findPricesByCriteria(appDate, productId, brandId);
 

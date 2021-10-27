@@ -8,18 +8,15 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 
@@ -39,7 +36,7 @@ public class PriceServiceTests {
     }
 
     @Test
-    public void test_OK() throws ParseException {
+    public void test_OK() {
 
         when(this.priceRepositoryMock.findPricesByCriteria(
                 nullable(Date.class),
@@ -52,7 +49,7 @@ public class PriceServiceTests {
     }
 
     @Test
-    public void test_EmptyResult() throws ParseException {
+    public void test_EmptyResult() {
 
         when(this.priceRepositoryMock.findPricesByCriteria(
                 nullable(Date.class),
