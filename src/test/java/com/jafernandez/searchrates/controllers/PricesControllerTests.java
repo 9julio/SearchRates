@@ -148,9 +148,16 @@ public class PricesControllerTests {
     }
 
     @Test
-    public void test_BadRequest() throws Exception {
+    public void test_BadRequest_ParseException() throws Exception {
 
         mvc.perform(get(String.format("/prices?appDate=%s", "fakeDate")))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void test_BadRequest_NumberFormatException() throws Exception {
+
+        mvc.perform(get(String.format("/prices?brandId=%s", "fakeId")))
                 .andExpect(status().isBadRequest());
     }
 

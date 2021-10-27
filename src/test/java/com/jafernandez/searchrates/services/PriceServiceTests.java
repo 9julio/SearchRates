@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 public class PriceServiceTests {
 
     @InjectMocks
-    PriceService priceService = new PriceServiceImpl();
+    PriceServiceImpl priceService;
 
     @Mock
     PriceRepository priceRepository;
